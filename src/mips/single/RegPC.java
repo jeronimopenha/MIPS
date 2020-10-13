@@ -53,9 +53,9 @@ public class RegPC extends hades.models.rtlib.register.RegR {
         portsymbol1.initialize("600 2400 NR");
         symbol.addMember(portsymbol1);
 
-        ColoredValueLabel colorlabel = new ColoredValueLabel();
-        colorlabel.initialize("1800 2200 2 42");
-        symbol.addMember(colorlabel);
+        //ColoredValueLabel colorlabel = new ColoredValueLabel();
+        //colorlabel.initialize("1800 2200 2 42");
+        //symbol.addMember(colorlabel);
 
         FatLabel fatlabel0 = new FatLabel();
         fatlabel0.initialize("600 800 2 P");
