@@ -279,7 +279,11 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
         PortLabel portlabel6 = new PortLabel();
         portlabel6.initialize("5500 1550 2 data");
         symbol.addMember(portlabel6);
-
+        
+        PortLabel portlabel9 = new PortLabel();
+        portlabel9.initialize("600 5800 2 CLK");
+        symbol.addMember(portlabel9);
+/*
         PortLabel portlabel7 = new PortLabel();
         portlabel7.initialize("1200 5700 2 RA");
         symbol.addMember(portlabel7);
@@ -287,5 +291,6 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
         PortLabel portlabel8 = new PortLabel();
         portlabel8.initialize("1800 5700 2 RD");
         symbol.addMember(portlabel8);
+*/
     }
 }

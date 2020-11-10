@@ -194,7 +194,7 @@ public class RegBank
         BusPortSymbol busportsymbol3 = new BusPortSymbol();
         busportsymbol3.initialize("0 4800 WriteData");
         symbol.addMember(busportsymbol3);
-
+/*
         BusPortSymbol busportsymbol4 = new BusPortSymbol();
         busportsymbol4.initialize("1200 6000 ReadDebug");
         symbol.addMember(busportsymbol4);
@@ -202,7 +202,7 @@ public class RegBank
         BusPortSymbol busportsymbol5 = new BusPortSymbol();
         busportsymbol5.initialize("1800 6000 DataDebug");
         symbol.addMember(busportsymbol5);
-
+*/
         BusPortSymbol busportsymbol6 = new BusPortSymbol();
         busportsymbol6.initialize("6000 1200 ReadData1");
         symbol.addMember(busportsymbol6);
@@ -266,7 +266,7 @@ public class RegBank
         PortLabel portlabel13 = new PortLabel();
         portlabel13.initialize("5200 3300 2 data2");
         symbol.addMember(portlabel13);
-
+/*
         PortLabel portlabel14 = new PortLabel();
         portlabel14.initialize("1200 5700 2 RA");
         symbol.addMember(portlabel14);
@@ -274,7 +274,7 @@ public class RegBank
         PortLabel portlabel15 = new PortLabel();
         portlabel15.initialize("1800 5700 2 RD");
         symbol.addMember(portlabel15);
-
+*/
     }
 
 }
