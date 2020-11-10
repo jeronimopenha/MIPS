@@ -21,7 +21,7 @@ import hades.symbols.Symbol;
 
 public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
 
-    protected PortStdLogicVector port_A, port_DIN, port_DOUT, port_ADebug, port_DDebug;
+    protected PortStdLogicVector port_A, port_DIN, port_DOUT;//, port_ADebug, port_DDebug;
     protected PortStdLogic1164 port_WR, port_RD, port_CLK;
 
     public final static double t_access = 30.0E-9; // read access time
@@ -35,30 +35,32 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
      */
     public RAMclk() {
         super();
+        constructPorts();
     }
 
     @Override
     protected void constructPorts() {
         port_A = new PortStdLogicVector(this, "Address", Port.IN, null,
                 getAddressBusWidth());
-        port_ADebug = new PortStdLogicVector(this, "ReadDebug", Port.IN, null,
-                getAddressBusWidth());
+        //port_ADebug = new PortStdLogicVector(this, "ReadDebug", Port.IN, null,
+        //        getAddressBusWidth());
         port_DIN = new PortStdLogicVector(this, "WriteData", Port.IN, null, n_bits);
         port_DOUT = new PortStdLogicVector(this, "ReadData", Port.OUT, null, n_bits);
-        port_DDebug = new PortStdLogicVector(this, "DataDebug", Port.OUT, null, n_bits);
+        //port_DDebug = new PortStdLogicVector(this, "DataDebug", Port.OUT, null, n_bits);
         port_WR = new PortStdLogic1164(this, "MemWrite", Port.IN, null);
         port_RD = new PortStdLogic1164(this, "MemRead", Port.IN, null);
         port_CLK = new PortStdLogic1164(this, "CLK", Port.IN, null);
 
-        ports = new Port[8];
+        //ports = new Port[8];
+        ports = new Port[6];
         ports[0] = port_A;
         ports[1] = port_DIN;
         ports[2] = port_DOUT;
         ports[3] = port_WR;
         ports[4] = port_RD;
         ports[5] = port_CLK;
-        ports[6] = port_ADebug;
-        ports[7] = port_DDebug;
+        //ports[6] = port_ADebug;
+        //ports[7] = port_DDebug;
 
     }
 
@@ -103,14 +105,15 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
 
     @Override
     public void evaluate(Object arg) {
+        
 
         double time = simulator.getSimTime() + t_access;
 
         StdLogicVector vector_A = port_A.getVectorOrUUU();
-        StdLogicVector vector_ADebug = port_ADebug.getVectorOrUUU();
+        //StdLogicVector vector_ADebug = port_ADebug.getVectorOrUUU();
         StdLogicVector vector_DIN = port_DIN.getVectorOrUUU();
         StdLogicVector vector_DOUT = null;
-        StdLogicVector vector_DDebug = null;
+        //StdLogicVector vector_DDebug = null;
         StdLogic1164 value_RD = port_RD.getValueOrU();
         StdLogic1164 value_WR = port_WR.getValueOrU();
         StdLogic1164 value_CLK = port_CLK.getValueOrU();
@@ -162,7 +165,8 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
             simulator.scheduleEvent(
                     new SimEvent(signal_DOUT, time, vector_DOUT, port_DOUT));
         }
-
+        
+        /*
         if (vector_ADebug.has_UXZ()) {                    // but address undefined
             vector_DDebug = vector_UUU.copy();
         } else {
@@ -177,7 +181,7 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
             simulator.scheduleEvent(
                     new SimEvent(signal_DDebug, time, vector_DDebug, port_DDebug));
         }
-
+        */
     }
 
     @Override
@@ -187,6 +191,7 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
 
     @Override
     public void constructDynamicSymbol() {
+        
         symbol = new Symbol();
         symbol.setParent(this);
 
@@ -221,7 +226,8 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
         PortSymbol portsymbol1 = new PortSymbol();
         portsymbol1.initialize("3000 6000 MemRead");
         symbol.addMember(portsymbol1);
-
+        
+        /*
         PortSymbol portsymbol2 = new PortSymbol();
         portsymbol2.initialize("1200 6000 ReadDebug");
         symbol.addMember(portsymbol2);
@@ -229,11 +235,11 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
         PortSymbol portsymbol3 = new PortSymbol();
         portsymbol3.initialize("1800 6000 DataDebug");
         symbol.addMember(portsymbol3);
-
+        */
+        
         PortSymbol portsymbol4 = new PortSymbol();
         portsymbol4.initialize("600 6000 CLK");
         symbol.addMember(portsymbol4);
-
         BusPortSymbol busportsymbol0 = new BusPortSymbol();
         busportsymbol0.initialize("0 1200 Address");
         symbol.addMember(busportsymbol0);
@@ -245,7 +251,7 @@ public class RAMclk extends hades.models.rtlib.memory.GenericMemory {
         BusPortSymbol busportsymbol2 = new BusPortSymbol();
         busportsymbol2.initialize("6000 1200 ReadData");
         symbol.addMember(busportsymbol2);
-
+        
         PortLabel portlabel0 = new PortLabel();
         portlabel0.initialize("2300 300 1 MemWrite");
         symbol.addMember(portlabel0);

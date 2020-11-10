@@ -6,8 +6,10 @@
             <file>file:/home/jeronimo/MEGA/cefet/2020/OC/MIPS/src/mips/single/Subset.java</file>
             <file>file:/home/jeronimo/MEGA/cefet/2020/OC/MIPS/src/mips/single/Alu.java</file>
             <file>file:/home/jeronimo/MEGA/cefet/2020/OC/MIPS/src/mips/single/RAMclk.java</file>
+            <file>file:/home/jeronimo/MEGA/cefet/2020/OC/MIPS/src/mips/single/Add.java</file>
             <file>file:/home/jeronimo/MEGA/cefet/2020/OC/MIPS/src/mips/single/RegBank.java</file>
             <file>file:/home/jeronimo/MEGA/cefet/2020/OC/MIPS/src/mips/single/RegPC.java</file>
+            <file>file:/home/jeronimo/MEGA/cefet/2020/OC/MIPS/src/mips/single/AluControl.java</file>
             <file>file:/home/jeronimo/MEGA/cefet/2020/OC/MIPS/src/mips/single/InstructionMem.java</file>
         </group>
     </open-files>
